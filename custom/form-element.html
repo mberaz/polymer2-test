@@ -1,0 +1,90 @@
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../bower_components/polymer/lib/mixins/gesture-event-listeners.html">
+
+
+<dom-module id="form-element">
+
+    <template>
+
+        <style>
+            /* shadow DOM styles go here */
+
+             :host {
+                display: inline-block;
+                border: 2px solid black;
+                background-color: lightseagreen;
+                margin: 5px;
+                clear: both;
+            }
+
+            .title-span {
+                font-weight: bold;
+                color: rebeccapurple;
+            }
+            /*iron-icon {
+        fill: var(--icon-toggle-color, rgba(0, 0, 0, 0));
+        stroke: var(--icon-toggle-outline-color, currentcolor);
+      }
+
+       :host([pressed]) iron-icon {
+        fill: var(--icon-toggle-pressed-color, currentcolor);
+      }*/
+        </style>
+        <!-- local DOM goes here -->
+
+        <h1>This is a form element</h1>
+        <h3>Made by <span class="title-span">[[fullName]]</span></h3>
+        <div>
+            <input type="text" value="{{message::input}}" />
+            <button on-click="handleClick">Kick Me</button>
+        </div>
+
+        <dom-if if="isbaron">
+            all hail the hypnotoad!
+            <div>{{user.firstname}} {{user.lastname}}</div>
+            <div>[[message]]</div>
+            <h4>Age: {{user.age}}</h4>
+        </dom-if>
+    </template>
+
+    <script>
+        class IconToggle extends Polymer.GestureEventListeners(Polymer.Element) {
+            static get is() {
+                return "form-element";
+            }
+            static get properties() {
+                return {
+                    fullName: String,
+                    message: {
+                        type: String,
+                        readOnly: false
+                    },
+                    isbaron: Boolean,
+                    user: {
+                        type: Object,
+                        // _deserializeValue(value, type) {
+                        //     debugger;
+                        //     return super._deserializeValue(value, type);
+                        // }
+                        readOnly: false,
+                        notify: true
+                    }
+                }
+            }
+            constructor() {
+                super();
+                console.log("user: " + this.user);
+
+            }
+            handleClick() {
+               
+                this.dispatchEvent(new CustomEvent('form.element.message', {detail: {message: this.message}}));
+            }
+            handleOutSideClick() {
+                this.message='Hell NO!';
+                console.log(this.message);
+            }
+        }
+        customElements.define(IconToggle.is, IconToggle);
+    </script>
+</dom-module>

@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+
+<head>
+    <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+    <script src="./index.js"></script>
+    <link rel="stylesheet" href="./custom.css" type="text/css">
+    <script>
+        /*
+              window.Polymer = window.Polymer || {};
+              window.Polymer.dom = 'shadow';
+              */
+    </script>
+    <link rel="import" href="form-element.html">
+</head>
+
+<body>
+    <form-element id="myElement"  full-name="the bear" user='{ "firstname": "michael", "lastname": "berezin", "age" :33 }' isbaron></form-element>
+    <br/>
+    <button type="button" onclick="doclick();">Click me</button>
+</body>
+
+</html>
