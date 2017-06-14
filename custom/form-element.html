@@ -21,6 +21,10 @@
                 font-weight: bold;
                 color: rebeccapurple;
             }
+            .all-hail
+            {
+                color: orange;
+            }
             /*iron-icon {
         fill: var(--icon-toggle-color, rgba(0, 0, 0, 0));
         stroke: var(--icon-toggle-outline-color, currentcolor);
@@ -36,11 +40,11 @@
         <h3>Made by <span class="title-span">[[fullName]]</span></h3>
         <div>
             <input type="text" value="{{message::input}}" />
-            <button on-click="handleClick">Kick Me</button>
+            <button on-click="handleClick">Send message</button>
         </div>
 
         <dom-if if="isbaron">
-            all hail the hypnotoad!
+           <h3 class="all-hail">All hail the hypnotoad!</h3> 
             <div>{{user.firstname}} {{user.lastname}}</div>
             <div>[[message]]</div>
             <h4>Age: {{user.age}}</h4>
